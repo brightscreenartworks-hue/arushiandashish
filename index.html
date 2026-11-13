@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ashish & Arushi — Wedding Invitation</title>
+<title>Arushi & Ashish — Wedding Invitation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=Noto+Serif:ital,wght@0,600;0,700;1,400&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
 <style>
@@ -380,7 +380,7 @@ h2.big{font-family:'Cinzel',serif;font-weight:800;font-size:30px;line-height:1.1
 .ev .lb{font-size:11px;letter-spacing:.22em;color:var(--rust);font-weight:700}
 .ev .val{font-family:'Noto Serif',serif;font-weight:700;font-size:clamp(19px,5vw,23px);line-height:1.3;color:#1d120a;margin:6px 0 4px}
 .ev .val .date-line{display:block;white-space:nowrap}
-.ev .val sup{font-size:0.56em;vertical-align:super;line-height:0;color:#9a4a1c;margin-left:1px}
+.ev .val sup{font-size:0.56em;vertical-align:super;line-height:0;color:#000;margin-left:1px}
 .ev .val .sub-day{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:17.5px;color:#8a4f1a;letter-spacing:.04em;margin-top:2px}
 .ev .ds{font-family:'Cormorant Garamond',serif;font-style:italic;font-variant:small-caps;font-size:15px;color:#6e5a48;letter-spacing:.06em}
 .sep{display:flex;align-items:center;justify-content:center;gap:10px;margin:22px 0;color:#d9a24a;font-size:10px}
@@ -400,7 +400,7 @@ h2.big{font-family:'Cinzel',serif;font-weight:800;font-size:30px;line-height:1.1
 .rsvp-family{font-family:'Cinzel',serif;font-weight:700;font-size:20px;color:#3a1606;letter-spacing:.08em;margin:12px 0 6px}
 .rsvp-contact{font-size:14px;color:#7a4a1f;letter-spacing:.06em}
 .rsvp-phone{font-family:ui-monospace,monospace;font-size:16px;font-weight:700;color:#2e1608;text-decoration:none;border-bottom:1px dashed #c9a77a;padding-bottom:1px}
-.rsvp-wa-pill{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:10px 20px;border-radius:22px;background:#25d366;color:#fff;text-decoration:none;font-weight:700;font-size:13px;letter-spacing:.04em;box-shadow:0 4px 12px rgba(37,211,102,.25);transition:transform .2s}
+.rsvp-wa-pill{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:22px;background:#25d366;color:#fff;text-decoration:none;font-weight:700;font-size:13px;letter-spacing:.04em;box-shadow:0 4px 12px rgba(37,211,102,.25);transition:transform .2s}
 .rsvp-wa-pill:hover{transform:translateY(-1px)}
 .rsvp-wa-pill svg{width:16px;height:16px}
 
@@ -511,7 +511,7 @@ body.loaded .hero-in>*:nth-child(7){animation-delay:1.02s}
 <div id="loader">
   <div class="lcard">
     <div class="lring"><span id="lmono"></span></div>
-    <h2 class="ltitle">Ashish &amp; Arushi</h2>
+    <h2 class="ltitle">Arushi &amp; Ashish</h2>
     <p class="lsub">WEDDING INVITATION</p>
     <button class="open-btn" id="openBtn" type="button">
       <span>OPEN INVITATION</span>
@@ -527,24 +527,19 @@ body.loaded .hero-in>*:nth-child(7){animation-delay:1.02s}
 const DATA = {
   shloka: "॥ श्री गणेशाय नमः ॥",
   invitationText: "We request the honor of your gracious presence on the auspicious occasion of the wedding celebration of",
-  groom: { name: "Ashish", parents: "Son of Mrs Rama Kanti & Late M.L. Rawat" },
-  bride: { name: "Arushi", parents: "Daughter of Mrs Maya Chandra & Mr Sunil Chandra" },
-  countdownTo: "2026-12-12T18:00:00+05:30",
+  bride: { name: "Arushi", parents: "Daughter of Mrs Maya Chandra and Mr Sunil Chandra" },
+  groom: { name: "Ashish", parents: "Son of Mrs Rama Kanti and Late M.L. Rawat" },
+  countdownTo: "2026-12-12T18:30:00+05:30",
   venues: [
-    { label: "Wedding Venue", name: "The Grand CASA", address: "Near Delhi Public School, Shaheed Path, Lucknow",
-      map: "The Grand CASA, Shaheed Path, Lucknow" },
-    { label: "Reception Venue", name: "Amar Milan Utsav Lawn", address: "Near Sky Public School, Bijnaur Road, Sarojini Nagar, Lucknow",
-      map: "Amar Milan Utsav Lawn, Bijnaur Road, Sarojini Nagar, Lucknow" }
+    { label: "Wedding Venue", name: "The Grand CASA", address: "Hariharpur, Neelmatha, Near Delhi Public School, Shaheed Path, Lucknow",
+      map: "The Grand CASA, Hariharpur, Neelmatha, Near Delhi Public School, Shaheed Path, Lucknow" }
   ],
   program: [
     { icon: "cal",   label: "The Date",            value: "<span class=\"date-line\">December 12<sup>th</sup> 2026</span><span class=\"sub-day\">Saturday</span>", desc: "Auspicious wedding ceremony" },
-    { icon: "clock", label: "Baraat",              value: "6:00 PM", desc: "The royal procession arrives" },
-    { icon: "heart", label: "Dinner",              value: "8:00 PM Onwards", desc: "Culinary feast, music & blessings" },
-    { icon: "cal",   label: "Reception",           value: "<span class=\"date-line\">December 15<sup>th</sup> 2026</span><span class=\"sub-day\">Tuesday</span>",  desc: "An evening of celebration" },
-    { icon: "clock", label: "Reception Timings",   value: "7:00 pm<span class=\"sub-day\">Followed by dinner</span>", desc: "" }
+    { icon: "clock", label: "Wedding Ceremony",    value: "6:30 PM<span class=\"sub-day\">Followed by Dinner</span>", desc: "" }
   ],
   couplePhoto: "couple.jpg",
-  rsvp: { family: "Rawat family", phone: "9599428151" },
+  rsvp: { family: "Chandra family", phones: ["9415196331", "9415104272"] },
   blessings: {
     endpoint: "",
     show: 2
@@ -625,11 +620,11 @@ S.push(`<section id="hero">
   <div class="hero-in">
     <p class="shloka">${DATA.shloka}</p>
     <p class="invitation-text">${DATA.invitationText}</p>
-    <h1 class="hn">${DATA.groom.name}</h1>
-    <p class="par">${DATA.groom.parents}</p>
-    <div class="amp"><i></i><span>&amp;</span><i></i></div>
     <h1 class="hn">${DATA.bride.name}</h1>
     <p class="par">${DATA.bride.parents}</p>
+    <div class="amp"><i></i><span>&amp;</span><i></i></div>
+    <h1 class="hn">${DATA.groom.name}</h1>
+    <p class="par">${DATA.groom.parents}</p>
   </div>
 </section>`);
 
@@ -649,10 +644,10 @@ S.push(`<section id="muhurtham"><p class="kicker rv">The Auspicious Muhurtham</p
 S.push(`<section id="memories">
   <div class="mem rv">
     ${sparkHead}
-    <h2 class="cname">${DATA.groom.name} &amp; ${DATA.bride.name}</h2>
+    <h2 class="cname">${DATA.bride.name} &amp; ${DATA.groom.name}</h2>
     <div class="frame">
       <div class="ph">
-        <img src="${DATA.couplePhoto}" alt="${DATA.groom.name} &amp; ${DATA.bride.name}">
+        <img src="${DATA.couplePhoto}" alt="${DATA.bride.name} &amp; ${DATA.groom.name}">
       </div>
     </div>
   </div>
@@ -664,9 +659,9 @@ S.push(`<section id="rsvp">
     ${sparkHead}
     <h2>RSVP</h2>
     <p class="rsvp-family">${DATA.rsvp.family}</p>
-    <p class="rsvp-contact">Contact details: <a href="tel:+91${DATA.rsvp.phone}" class="rsvp-phone">${DATA.rsvp.phone}</a></p>
-    <div style="margin-top:14px;">
-      <a href="https://wa.me/91${DATA.rsvp.phone}?text=Namaste%20Rawat%20family%20%F0%9F%99%8F" target="_blank" rel="noopener" class="rsvp-wa-pill">${WA}Chat on WhatsApp</a>
+    <p class="rsvp-contact" style="margin-top:8px;">Contact details: ${DATA.rsvp.phones.map(p => `<a href="tel:+91${p}" class="rsvp-phone">${p}</a>`).join(' &nbsp;|&nbsp; ')}</p>
+    <div style="margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+      ${DATA.rsvp.phones.map(p => `<a href="https://wa.me/91${p}?text=Namaste%20${encodeURIComponent(DATA.rsvp.family)}%20%F0%9F%99%8F" target="_blank" rel="noopener" class="rsvp-wa-pill">${WA}Chat on WhatsApp (${p})</a>`).join('')}
     </div>
   </div>
 </section>`);
@@ -676,7 +671,7 @@ S.push(`<section id="wishes">
   <div class="rv">${sparkHead}<p class="wtitle">Share a blessing or note for the couple</p></div>
   <form class="bform rv" id="bform">
     <div class="inp">${ic('user')}<input id="bName" maxlength="40" placeholder="YOUR NAME" required></div>
-    <textarea id="bText" maxlength="300" placeholder="SHARE YOUR BLESSINGS FOR ${DATA.groom.name.toUpperCase()} & ${DATA.bride.name.toUpperCase()}..." required></textarea>
+    <textarea id="bText" maxlength="300" placeholder="SHARE YOUR BLESSINGS FOR ${DATA.bride.name.toUpperCase()} & ${DATA.groom.name.toUpperCase()}..." required></textarea>
     <button class="bbtn" id="bBtn">SEND BLESSINGS</button><p class="bnote" id="bNote"></p>
   </form>
   <div id="wlist"></div><button class="more" id="bMore" hidden>VIEW MORE</button>
@@ -701,7 +696,7 @@ const end = new Date(DATA.countdownTo).getTime(), cells = document.querySelector
 })();
 
 /* --- Blessings wall --- */
-const B = DATA.blessings, LS = "blessings-" + DATA.groom.name + DATA.bride.name;
+const B = DATA.blessings, LS = "blessings-" + DATA.bride.name + DATA.groom.name;
 let all = [], expanded = false;
 const esc = t => String(t).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const ago = ts => { const m = Math.floor((Date.now() - ts) / 6e4);
