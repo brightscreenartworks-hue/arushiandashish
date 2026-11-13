@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ashish & Arushi — Wedding Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=Noto+Serif:ital,wght@0,600;0,700;1,400&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6efe3; --card:#fff; --line:#f3e3a6; --brown:#3d1d0c; --brown2:#5a3a22; --tan:#9a7a5a; --gold:#b98436;
+  --rust:#9a4a1c; --saffron:#b8520c; --ruby:#9b1c3a; --soft:#fff8e1; --green:#22c55e;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#ece4d6;font-family:'Cinzel',serif;color:var(--brown)}
+.page{max-width:460px;margin:0 auto;background:var(--bg);box-shadow:0 0 40px rgba(80,50,20,.15);overflow:hidden;position:relative}
+section{position:relative;padding:56px 22px}
+a{color:inherit}
+
+/* ---------- 1. HERO ---------- */
+#hero{
+  padding:0;
+  aspect-ratio:768/1376;
+  width:100%;
+  background:#f1dfc0 url(hero.webp) center top/cover no-repeat;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero-in{
+  position:absolute;
+  left:0;
+  right:0;
+  top:23.5%;
+  padding:0 22px;
+  z-index:3;
+}
+.shloka{
+  font-family:'Tiro Devanagari Hindi',serif;
+  color:#7a4a1f;
+  font-size:clamp(13px,3.6vw,16px);
+  letter-spacing:.18em;
+}
+.invitation-text{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  color:#5d3a1f;
+  font-size:clamp(12px,3.2vw,14px);
+  line-height:1.45;
+  max-width:320px;
+  margin:10px auto 10px;
+  letter-spacing:.02em;
+}
+.hn{
+  font-family:'Cinzel',serif;
+  font-weight:500;
+  font-size:clamp(28px,8.5vw,38px);
+  color:#2e1608;
+  line-height:1.1;
+  letter-spacing:.02em;
+}
+.par{
+  font-size:clamp(10px,2.7vw,11.5px);
+  color:#6b4a30;
+  letter-spacing:.03em;
+  margin-top:4px;
+}
+.amp{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  margin:10px 0 6px;
+}
+.amp i{
+  width:42px;
+  height:1px;
+  background:#c9a77a;
+}
+.amp span{
+  font-family:'Cinzel',serif;
+  font-size:24px;
+  color:var(--ruby);
+  font-weight:600;
+  line-height:1;
+}
+
+/* --- Minimal Petal Shower --- */
+.petals-shower{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:2;
+}
+.petal{
+  position:absolute;
+  top:-32px;
+  will-change:transform,opacity,top;
+  pointer-events:none;
+}
+.petal svg{
+  display:block;
+  filter:drop-shadow(0 2px 4px rgba(110,30,20,.18));
+  animation:petalFlip ease-in-out infinite alternate;
+  transform-origin:center center;
+}
+@keyframes petalFlip{
+  0%  {transform:rotate3d(1,0.4,0.2,0deg) scale(0.9)}
+  50% {transform:rotate3d(0.4,1,0.6,180deg) scale(1.05)}
+  100%{transform:rotate3d(0.8,0.3,1,360deg) scale(0.9)}
+}
+@keyframes fall1{
+  0%  {top:-35px;transform:translateX(0);opacity:0}
+  10% {opacity:.88}
+  50% {transform:translateX(20px)}
+  90% {opacity:.88}
+  100%{top:104%;transform:translateX(-12px);opacity:0}
+}
+@keyframes fall2{
+  0%  {top:-35px;transform:translateX(0);opacity:0}
+  10% {opacity:.85}
+  50% {transform:translateX(-22px)}
+  90% {opacity:.85}
+  100%{top:104%;transform:translateX(15px);opacity:0}
+}
+@keyframes fall3{
+  0%  {top:-35px;transform:translateX(0);opacity:0}
+  10% {opacity:.88}
+  35% {transform:translateX(16px)}
+  75% {transform:translateX(-18px)}
+  90% {opacity:.88}
+  100%{top:104%;transform:translateX(6px);opacity:0}
+}
+
+/* --- Flying Small Butterflies at Bottom --- */
+.hero-butterflies{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:38%;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:4;
+}
+.bfly{
+  position:absolute;
+  pointer-events:none;
+  will-change:transform;
+  filter:drop-shadow(0 2px 5px rgba(60,25,10,.25));
+}
+.bfly-box{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  perspective:180px;
+}
+.bfly-wing{
+  width:14px;
+  height:20px;
+  display:block;
+}
+.bfly-left{
+  transform-origin:right center;
+  animation:flapL 0.2s ease-in-out infinite alternate;
+}
+.bfly-right{
+  transform-origin:left center;
+  animation:flapR 0.2s ease-in-out infinite alternate;
+}
+.bfly-torso{
+  width:2px;
+  height:13px;
+  background:#3e1e0a;
+  border-radius:2px;
+  margin:0 -1px;
+  z-index:2;
+  position:relative;
+}
+.bfly-torso::before{
+  content:"";
+  position:absolute;
+  top:-3px;
+  left:-1px;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:#3e1e0a;
+}
+@keyframes flapL{
+  0%  {transform:rotateY(0deg) rotateZ(-4deg)}
+  100%{transform:rotateY(65deg) rotateZ(6deg)}
+}
+@keyframes flapR{
+  0%  {transform:rotateY(0deg) rotateZ(4deg)}
+  100%{transform:rotateY(-65deg) rotateZ(-6deg)}
+}
+
+.bfly-1{
+  bottom:22%;
+  left:14%;
+  animation:bflyFlight1 8s ease-in-out infinite;
+}
+.bfly-2{
+  bottom:27%;
+  right:15%;
+  animation:bflyFlight2 9s ease-in-out infinite;
+}
+.bfly-3{
+  bottom:11%;
+  left:48%;
+  animation:bflyFlight3 7s ease-in-out infinite;
+}
+.bfly-4{
+  bottom:16%;
+  right:28%;
+  animation:bflyFlight4 8.5s ease-in-out infinite;
+}
+
+@keyframes bflyFlight1{
+  0%  {transform:translate(0,0) rotate(6deg) scale(0.9)}
+  25% {transform:translate(32px,-24px) rotate(-8deg) scale(0.95)}
+  50% {transform:translate(65px,-10px) rotate(10deg) scale(0.9)}
+  75% {transform:translate(28px,14px) rotate(-4deg) scale(0.85)}
+  100%{transform:translate(0,0) rotate(6deg) scale(0.9)}
+}
+@keyframes bflyFlight2{
+  0%  {transform:translate(0,0) rotate(-6deg) scale(0.85)}
+  30% {transform:translate(-32px,-20px) rotate(10deg) scale(0.9)}
+  60% {transform:translate(-58px,8px) rotate(-12deg) scale(0.82)}
+  85% {transform:translate(-18px,16px) rotate(4deg) scale(0.85)}
+  100%{transform:translate(0,0) rotate(-6deg) scale(0.85)}
+}
+@keyframes bflyFlight3{
+  0%  {transform:translate(0,0) rotate(8deg) scale(0.75)}
+  35% {transform:translate(25px,-18px) rotate(-10deg) scale(0.8)}
+  70% {transform:translate(-22px,-28px) rotate(8deg) scale(0.75)}
+  100%{transform:translate(0,0) rotate(8deg) scale(0.75)}
+}
+@keyframes bflyFlight4{
+  0%  {transform:translate(0,0) rotate(-4deg) scale(0.7)}
+  40% {transform:translate(-25px,-18px) rotate(8deg) scale(0.75)}
+  80% {transform:translate(26px,-8px) rotate(-8deg) scale(0.7)}
+  100%{transform:translate(0,0) rotate(-4deg) scale(0.7)}
+}
+
+/* ---------- Welcome / Open Screen (Loader) ---------- */
+#loader{
+  position:fixed;
+  inset:0;
+  z-index:999;
+  background:radial-gradient(circle at 50% 45%, #fcf8f0 0%, #f4ebd9 100%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  text-align:center;
+  transition:opacity .8s ease,visibility .8s ease;
+  cursor:pointer;
+}
+#loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+.lcard{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:12px;
+  max-width:320px;
+}
+.lring{
+  position:relative;
+  width:104px;
+  height:104px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.lring::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  border:2px solid #efdfc2;
+  border-top-color:var(--gold);
+  animation:spin 2s linear infinite;
+}
+.lring::after{
+  content:"";
+  position:absolute;
+  inset:8px;
+  border-radius:50%;
+  border:1px dashed #d9bd85;
+  animation:spin 8s linear infinite reverse;
+}
+.lring span{
+  font-size:22px;
+  color:#5a3a22;
+  letter-spacing:.08em;
+  font-weight:600;
+}
+.ltitle{
+  font-family:'Cinzel',serif;
+  font-size:24px;
+  font-weight:700;
+  color:#3a1606;
+  letter-spacing:.06em;
+  margin-top:6px;
+}
+.lsub{
+  font-size:10.5px;
+  letter-spacing:.26em;
+  color:#a0601f;
+  font-weight:600;
+  text-transform:uppercase;
+}
+.open-btn{
+  margin-top:16px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:14px 32px;
+  border-radius:32px;
+  background:linear-gradient(135deg, #b8520c, #9a4a1c);
+  color:#fff;
+  border:1.5px solid #f7dfa3;
+  font-family:'Cinzel',serif;
+  font-weight:700;
+  font-size:12.5px;
+  letter-spacing:.16em;
+  cursor:pointer;
+  box-shadow:0 8px 24px rgba(184,82,12,.35);
+  animation:pulseBtn 2s ease-in-out infinite;
+  transition:transform .2s, box-shadow .2s;
+}
+.open-btn:hover{
+  transform:scale(1.04);
+  box-shadow:0 10px 28px rgba(184,82,12,.48);
+}
+.open-btn svg{
+  width:16px;
+  height:16px;
+  fill:#fff;
+}
+@keyframes pulseBtn{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.03)}
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- shared headers ---------- */
+.kicker{text-align:center;font-size:11px;letter-spacing:.3em;color:#a0601f;font-weight:600;text-transform:uppercase}
+.spark{display:flex;justify-content:center;align-items:center;gap:8px;margin-bottom:8px}
+.spark i{width:40px;height:1px;background:linear-gradient(90deg,transparent,#d7b56a)}
+.spark i:last-child{transform:scaleX(-1)}
+.spark svg{width:16px;height:16px;stroke:#d9862b;fill:none;stroke-width:1.6}
+h2.big{font-family:'Cinzel',serif;font-weight:800;font-size:30px;line-height:1.15;text-align:center;color:#3a1606;margin-top:6px}
+
+/* ---------- 2. COUNTDOWN & VENUE ---------- */
+.cd{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0 44px}
+.cd div{background:#fff;border:1px solid #e9dcc8;border-radius:16px;text-align:center;padding:16px 4px 12px}
+.cd b{display:block;font-weight:400;font-size:26px;color:#3a2516}
+.cd span{font-size:10px;letter-spacing:.12em;color:#a3825f}
+.vcard{background:#fff;border:1px solid #e9dcc8;border-radius:22px;padding:26px 22px;text-align:center;margin-top:18px;box-shadow:0 4px 14px rgba(120,80,30,.06)}
+.vlabel{display:flex;justify-content:center;align-items:center;gap:8px;font-size:11px;letter-spacing:.25em;color:#a0601f;font-weight:600}
+.vlabel svg{width:16px;height:16px;stroke:#a0601f;fill:none;stroke-width:1.8}
+.vcard h3{font-weight:400;font-size:21px;color:#3a2516;margin:14px 0 8px}
+.vcard p{font-size:12.5px;color:#a07d5c;line-height:1.6}
+.vbtn{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:20px;padding:13px;border:1px solid #e3c27a;border-radius:30px;background:#f8ecd8;text-decoration:none;font-size:14px;color:#5a3a22;transition:background .3s}
+.vbtn:hover{background:#f2dfbf}
+.vbtn svg{width:16px;height:16px;stroke:#5a3a22;fill:none;stroke-width:1.8}
+
+/* ---------- 3. PROGRAM ---------- */
+.outer{background:#fff;border:1px solid var(--line);border-radius:30px;padding:30px 30px 34px;margin-top:24px;box-shadow:0 6px 24px rgba(120,80,30,.07)}
+.inner{border:1px solid var(--line);border-radius:26px;padding:28px 16px 30px;text-align:center}
+.ev .ic{width:40px;height:40px;border-radius:50%;background:var(--soft);border:1px solid #f0d78e;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.ev .ic svg{width:17px;height:17px;stroke:#a0601f;fill:none;stroke-width:1.8}
+.ev .lb{font-size:11px;letter-spacing:.22em;color:var(--rust);font-weight:700}
+.ev .val{font-family:'Noto Serif',serif;font-weight:700;font-size:clamp(19px,5vw,23px);line-height:1.3;color:#1d120a;margin:6px 0 4px}
+.ev .val .date-line{display:block;white-space:nowrap}
+.ev .val sup{font-size:0.56em;vertical-align:super;line-height:0;color:#9a4a1c;margin-left:1px}
+.ev .val .sub-day{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:17.5px;color:#8a4f1a;letter-spacing:.04em;margin-top:2px}
+.ev .ds{font-family:'Cormorant Garamond',serif;font-style:italic;font-variant:small-caps;font-size:15px;color:#6e5a48;letter-spacing:.06em}
+.sep{display:flex;align-items:center;justify-content:center;gap:10px;margin:22px 0;color:#d9a24a;font-size:10px}
+.sep i{width:80px;height:1px;background:linear-gradient(90deg,transparent,#ecd9a8)}
+.sep i:last-child{transform:scaleX(-1)}
+
+/* ---------- 4. MEMORIES (COUPLE FRAME) ---------- */
+.mem{background:#fff;border:1px solid var(--line);border-radius:28px;padding:30px 24px 34px;text-align:center}
+.mem .cname{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(24px,6.8vw,30px);color:#3a1606;letter-spacing:.05em;margin-top:6px}
+.frame{margin:22px auto 0;padding:8px;border:1px solid #eee3d0;border-radius:22px;background:#fff;box-shadow:0 8px 24px rgba(120,80,30,.1)}
+.frame .ph{aspect-ratio:2/3;border-radius:16px;border:1px solid #f0d78e;overflow:hidden;background:#fbf5ea}
+.frame img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block}
+
+/* ---------- 5. RSVP ---------- */
+.rs{background:#fff;border:1px solid var(--line);border-radius:30px;padding:30px 26px 30px}
+.rs h2{text-align:center;font-weight:700;font-size:22px;letter-spacing:.25em;color:#3a1606}
+.rsvp-family{font-family:'Cinzel',serif;font-weight:700;font-size:20px;color:#3a1606;letter-spacing:.08em;margin:12px 0 6px}
+.rsvp-contact{font-size:14px;color:#7a4a1f;letter-spacing:.06em}
+.rsvp-phone{font-family:ui-monospace,monospace;font-size:16px;font-weight:700;color:#2e1608;text-decoration:none;border-bottom:1px dashed #c9a77a;padding-bottom:1px}
+.rsvp-wa-pill{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:10px 20px;border-radius:22px;background:#25d366;color:#fff;text-decoration:none;font-weight:700;font-size:13px;letter-spacing:.04em;box-shadow:0 4px 12px rgba(37,211,102,.25);transition:transform .2s}
+.rsvp-wa-pill:hover{transform:translateY(-1px)}
+.rsvp-wa-pill svg{width:16px;height:16px}
+
+/* ---------- 6. WISHES / BLESSINGS ---------- */
+.wtitle{text-align:center;font-size:13px;letter-spacing:.18em;font-weight:700;color:#5a2c10;margin-bottom:18px;text-transform:uppercase}
+.wish{position:relative;background:#fff;border:2px solid #f7e2a0;border-radius:18px;padding:16px 18px 18px;margin-bottom:14px;box-shadow:0 4px 14px rgba(200,160,60,.12)}
+.wish:nth-child(n+3){border-width:1px;box-shadow:none}
+.wh{display:flex;align-items:center;gap:10px}
+.av{width:28px;height:28px;border-radius:50%;background:var(--soft);border:1px solid #f0d78e;display:flex;align-items:center;justify-content:center;font-size:12px;color:#a0601f}
+.wn{font-weight:700;font-size:14px;color:#6b2e0e}
+.ago{margin-left:auto;font-size:11px;color:#a3907d}
+.wt{font-family:'Noto Serif',serif;font-style:italic;font-size:14.5px;color:#4e3826;margin-top:10px;line-height:1.5;padding-right:20px}
+.q{position:absolute;right:16px;bottom:8px;font-family:'Noto Serif',serif;font-size:34px;color:#efe6d8;line-height:1}
+
+.bform{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;margin-bottom:18px;display:grid;gap:10px}
+.inp{display:flex;align-items:center;gap:10px;border:1px solid #f4dc96;background:#fffdf3;border-radius:16px;padding:0 14px}
+.inp svg{width:16px;height:16px;stroke:#c0712b;fill:none;stroke-width:1.8;flex:none}
+.inp input,textarea{flex:1;border:0;background:transparent;padding:14px 0;font-family:'Cinzel',serif;font-size:13px;color:var(--brown);outline:none;width:100%}
+.bform .inp input{padding:12px 0}
+textarea{border:1px solid #f4dc96;background:#fffdf3;border-radius:16px;padding:14px;resize:vertical;min-height:84px;font-family:'Cinzel',serif;font-size:13px;color:var(--brown);outline:none;width:100%}
+.bform textarea{min-height:70px}
+::placeholder{color:#b9aa98}
+.bbtn{border:0;cursor:pointer;padding:13px;border-radius:14px;background:var(--saffron);color:#fff;font-family:'Cinzel',serif;font-weight:700;font-size:13px;letter-spacing:.08em;transition:opacity .25s}
+.bbtn:disabled{opacity:.6}
+.bnote{font-size:11px;color:#a3907d;text-align:center;min-height:14px}
+.empty{text-align:center;font-family:'Noto Serif',serif;font-style:italic;color:#8a7766;padding:14px}
+.more{display:block;margin:6px auto 0;background:none;border:1px solid #e3c27a;border-radius:30px;padding:10px 26px;font-family:'Cinzel',serif;font-size:12px;letter-spacing:.12em;color:#7a3d10;cursor:pointer}
+.more:hover{background:#f8ecd8}
+
+/* ---------- 7. FOOTER ---------- */
+#closing{text-align:center;padding:70px 30px 80px}
+.mcircle{width:56px;height:56px;margin:0 auto;border-radius:50%;background:#fff;border:1px solid #e9dcc8;display:flex;align-items:center;justify-content:center;font-size:14px;color:#5a3a22;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+#closing p{font-size:13.5px;color:#8a7766;line-height:1.55;margin:22px auto 0;max-width:280px}
+.heart{display:flex;justify-content:center;align-items:center;gap:12px;margin-top:22px}
+.heart i{width:48px;height:1px;background:#e8cf8a}
+.heart svg{width:12px;height:12px;fill:var(--ruby)}
+
+/* ---------- motion ---------- */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
+.rv.in{opacity:1;transform:none}
+
+.hero-in>*{
+  opacity:0;
+  transform:translateY(16px);
+  will-change:transform,opacity;
+}
+body.loaded .hero-in>*{
+  animation:heroUp .85s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+body.loaded .hero-in>*:nth-child(1){animation-delay:.1s}
+body.loaded .hero-in>*:nth-child(2){animation-delay:.25s}
+body.loaded .hero-in>*:nth-child(3){animation-delay:.42s}
+body.loaded .hero-in>*:nth-child(4){animation-delay:.58s}
+body.loaded .hero-in>*:nth-child(5){animation-delay:.72s}
+body.loaded .hero-in>*:nth-child(6){animation-delay:.86s}
+body.loaded .hero-in>*:nth-child(7){animation-delay:1.02s}
+
+@keyframes heroUp{
+  from{opacity:0;transform:translateY(16px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv,.hero-in>*{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<!-- Background music (starts at 45s mark of song) -->
+<audio id="bgMusic" src="music.mp3" preload="auto" loop playsinline></audio>
+
+<!-- SVG Gradients for Petals & Butterflies -->
+<svg width="0" height="0" style="position:absolute;visibility:hidden" aria-hidden="true">
+  <defs>
+    <linearGradient id="pGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff758c"/>
+      <stop offset="55%" stop-color="#c9184a"/>
+      <stop offset="100%" stop-color="#800f2f"/>
+    </linearGradient>
+    <linearGradient id="pGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffb3c1"/>
+      <stop offset="60%" stop-color="#e25372"/>
+      <stop offset="100%" stop-color="#9d174d"/>
+    </linearGradient>
+    <linearGradient id="pGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fed7aa"/>
+      <stop offset="60%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <linearGradient id="pGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd166"/>
+      <stop offset="100%" stop-color="#e76f51"/>
+    </linearGradient>
+    <linearGradient id="bfGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd166"/>
+      <stop offset="45%" stop-color="#e76f51"/>
+      <stop offset="100%" stop-color="#9b1c3a"/>
+    </linearGradient>
+    <linearGradient id="bfGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<!-- Welcome / Open Invitation Screen -->
+<div id="loader">
+  <div class="lcard">
+    <div class="lring"><span id="lmono"></span></div>
+    <h2 class="ltitle">Ashish &amp; Arushi</h2>
+    <p class="lsub">WEDDING INVITATION</p>
+    <button class="open-btn" id="openBtn" type="button">
+      <span>OPEN INVITATION</span>
+      <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+    </button>
+  </div>
+</div>
+
+<div class="page" id="app"></div>
+
+<script>
+/* ============ EDIT ALL TEXT HERE ============ */
+const DATA = {
+  shloka: "॥ श्री गणेशाय नमः ॥",
+  invitationText: "We request the honor of your gracious presence on the auspicious occasion of the wedding celebration of",
+  groom: { name: "Ashish", parents: "Son of Mrs Rama Kanti & Late M.L. Rawat" },
+  bride: { name: "Arushi", parents: "Daughter of Mrs Maya Chandra & Mr Sunil Chandra" },
+  countdownTo: "2026-12-12T18:00:00+05:30",
+  venues: [
+    { label: "Wedding Venue", name: "The Grand CASA", address: "Near Delhi Public School, Shaheed Path, Lucknow",
+      map: "The Grand CASA, Shaheed Path, Lucknow" },
+    { label: "Reception Venue", name: "Amar Milan Utsav Lawn", address: "Near Sky Public School, Bijnaur Road, Sarojini Nagar, Lucknow",
+      map: "Amar Milan Utsav Lawn, Bijnaur Road, Sarojini Nagar, Lucknow" }
+  ],
+  program: [
+    { icon: "cal",   label: "The Date",            value: "<span class=\"date-line\">December 12<sup>th</sup> 2026</span><span class=\"sub-day\">Saturday</span>", desc: "Auspicious wedding ceremony" },
+    { icon: "clock", label: "Baraat",              value: "6:00 PM", desc: "The royal procession arrives" },
+    { icon: "heart", label: "Dinner",              value: "8:00 PM Onwards", desc: "Culinary feast, music & blessings" },
+    { icon: "cal",   label: "Reception",           value: "<span class=\"date-line\">December 15<sup>th</sup> 2026</span><span class=\"sub-day\">Tuesday</span>",  desc: "An evening of celebration" },
+    { icon: "clock", label: "Reception Timings",   value: "7:00 pm<span class=\"sub-day\">Followed by dinner</span>", desc: "" }
+  ],
+  couplePhoto: "couple.jpg",
+  rsvp: { family: "Rawat family", phone: "9599428151" },
+  blessings: {
+    endpoint: "",
+    show: 2
+  },
+  monogram: "A & A",
+  closing: "We seek your blessings and gracious presence as we begin our new journey together."
+};
+/* ============================================ */
+
+const I = {
+  cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  heart:'<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>',
+  pin:'<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
+  ext:'<path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>',
+  spark:'<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 3v4M17 5h4M5 17v3M3.5 18.5h3"/>',
+  user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/>'
+};
+const ic = k => `<svg viewBox="0 0 24 24">${I[k]}</svg>`;
+const sparkHead = `<div class="spark"><i></i>${ic('spark')}<i></i></div>`;
+const mapUrl = q => "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(q);
+const WA = '<svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.7-.3z"/></svg>';
+
+/* --- Petals config for minimal shower --- */
+const petals = [
+  { left: 7,  w: 16, h: 20, grad: "pGrad1", dur: 6.8, del: -1.2, fall: 1, flipDur: 3.2 },
+  { left: 17, w: 14, h: 18, grad: "pGrad2", dur: 7.5, del: -4.5, fall: 2, flipDur: 2.8 },
+  { left: 27, w: 18, h: 22, grad: "pGrad3", dur: 8.2, del: -2.1, fall: 3, flipDur: 3.6 },
+  { left: 37, w: 15, h: 19, grad: "pGrad1", dur: 6.2, del: -5.3, fall: 1, flipDur: 2.9 },
+  { left: 47, w: 19, h: 23, grad: "pGrad2", dur: 7.8, del: -0.8, fall: 2, flipDur: 3.4 },
+  { left: 57, w: 14, h: 17, grad: "pGrad4", dur: 6.5, del: -3.7, fall: 3, flipDur: 2.6 },
+  { left: 67, w: 17, h: 21, grad: "pGrad1", dur: 7.2, del: -5.9, fall: 1, flipDur: 3.1 },
+  { left: 77, w: 15, h: 18, grad: "pGrad3", dur: 8.0, del: -2.4, fall: 2, flipDur: 3.5 },
+  { left: 87, w: 18, h: 22, grad: "pGrad2", dur: 6.9, del: -4.0, fall: 3, flipDur: 2.7 },
+  { left: 12, w: 15, h: 19, grad: "pGrad4", dur: 7.6, del: -3.1, fall: 2, flipDur: 3.3 },
+  { left: 52, w: 16, h: 20, grad: "pGrad1", dur: 8.5, del: -6.2, fall: 1, flipDur: 3.0 },
+  { left: 82, w: 14, h: 18, grad: "pGrad2", dur: 7.1, del: -1.8, fall: 3, flipDur: 2.8 }
+];
+
+/* --- Butterfly wing SVG builder --- */
+const bflySVG = grad => `
+  <div class="bfly-box">
+    <svg class="bfly-wing bfly-left" viewBox="0 0 20 28">
+      <path d="M19,14 C17,7 10,1 2,3 C-1,4 0,11 6,14 C0,16 -1,23 3,26 C9,29 17,23 19,14 Z" fill="url(#${grad})"/>
+      <circle cx="6" cy="7" r="1.5" fill="#fff" opacity="0.8"/>
+      <circle cx="5" cy="22" r="1.2" fill="#fff" opacity="0.8"/>
+    </svg>
+    <div class="bfly-torso"></div>
+    <svg class="bfly-wing bfly-right" viewBox="0 0 20 28">
+      <path d="M1,14 C3,7 10,1 18,3 C21,4 20,11 14,14 C20,16 21,23 17,26 C11,29 3,23 1,14 Z" fill="url(#${grad})"/>
+      <circle cx="14" cy="7" r="1.5" fill="#fff" opacity="0.8"/>
+      <circle cx="15" cy="22" r="1.2" fill="#fff" opacity="0.8"/>
+    </svg>
+  </div>
+`;
+
+/* --- sections --- */
+const S = [];
+
+/* 1. HERO with centered text, shloka below Ganesh ji, & between couple, petal shower & butterflies */
+S.push(`<section id="hero">
+  <div class="petals-shower" aria-hidden="true">
+    ${petals.map(p => `
+      <div class="petal" style="left:${p.left}%;animation:fall${p.fall} ${p.dur}s linear infinite;animation-delay:${p.del}s;">
+        <svg viewBox="0 0 24 24" style="width:${p.w}px;height:${p.h}px;animation-duration:${p.flipDur}s">
+          <path d="M12,2 C18,6 22,14 17,21 C12,25 6,23 4,16 C2,10 6,4 12,2 Z" fill="url(#${p.grad})"/>
+        </svg>
+      </div>`).join('')}
+  </div>
+
+  <div class="hero-butterflies" aria-hidden="true">
+    <div class="bfly bfly-1">${bflySVG('bfGrad1')}</div>
+    <div class="bfly bfly-2">${bflySVG('bfGrad2')}</div>
+    <div class="bfly bfly-3">${bflySVG('bfGrad1')}</div>
+    <div class="bfly bfly-4">${bflySVG('bfGrad2')}</div>
+  </div>
+
+  <div class="hero-in">
+    <p class="shloka">${DATA.shloka}</p>
+    <p class="invitation-text">${DATA.invitationText}</p>
+    <h1 class="hn">${DATA.groom.name}</h1>
+    <p class="par">${DATA.groom.parents}</p>
+    <div class="amp"><i></i><span>&amp;</span><i></i></div>
+    <h1 class="hn">${DATA.bride.name}</h1>
+    <p class="par">${DATA.bride.parents}</p>
+  </div>
+</section>`);
+
+/* 2. PROGRAM */
+S.push(`<section id="program"><div class="rv">${sparkHead}<p class="kicker">Sacred Auspicious Program</p></div>
+  <div class="outer rv"><div class="inner">${DATA.program.map((e,i)=>`${i?'<div class="sep"><i></i>✦<i></i></div>':''}
+    <div class="ev"><div class="ic">${ic(e.icon)}</div><p class="lb">${e.label.toUpperCase()}</p><p class="val">${e.value}</p>${e.desc ? `<p class="ds">${e.desc}</p>` : ''}</div>`).join('')}
+  </div></div></section>`);
+
+/* 3. MUHURTHAM & VENUE */
+S.push(`<section id="muhurtham"><p class="kicker rv">The Auspicious Muhurtham</p>
+  <div class="cd rv" id="cd">${["Days","Hrs","Min","Sec"].map(u=>`<div><b>00</b><span>${u.toUpperCase()}</span></div>`).join('')}</div>
+  ${DATA.venues.map(v=>`<div class="vcard rv"><div class="vlabel">${ic('pin')}${v.label.toUpperCase()}</div><h3>${v.name}</h3><p>${v.address}</p>
+    <a class="vbtn" href="${mapUrl(v.map)}" target="_blank" rel="noopener">${ic('ext')}Get Directions</a></div>`).join('')}</section>`);
+
+/* 4. MEMORIES (COUPLE FRAME) */
+S.push(`<section id="memories">
+  <div class="mem rv">
+    ${sparkHead}
+    <h2 class="cname">${DATA.groom.name} &amp; ${DATA.bride.name}</h2>
+    <div class="frame">
+      <div class="ph">
+        <img src="${DATA.couplePhoto}" alt="${DATA.groom.name} &amp; ${DATA.bride.name}">
+      </div>
+    </div>
+  </div>
+</section>`);
+
+/* 5. RSVP (Clean contact card) */
+S.push(`<section id="rsvp">
+  <div class="rs rv" style="text-align:center;">
+    ${sparkHead}
+    <h2>RSVP</h2>
+    <p class="rsvp-family">${DATA.rsvp.family}</p>
+    <p class="rsvp-contact">Contact details: <a href="tel:+91${DATA.rsvp.phone}" class="rsvp-phone">${DATA.rsvp.phone}</a></p>
+    <div style="margin-top:14px;">
+      <a href="https://wa.me/91${DATA.rsvp.phone}?text=Namaste%20Rawat%20family%20%F0%9F%99%8F" target="_blank" rel="noopener" class="rsvp-wa-pill">${WA}Chat on WhatsApp</a>
+    </div>
+  </div>
+</section>`);
+
+/* 6. SHARE A BLESSING OR NOTE FOR THE COUPLE */
+S.push(`<section id="wishes">
+  <div class="rv">${sparkHead}<p class="wtitle">Share a blessing or note for the couple</p></div>
+  <form class="bform rv" id="bform">
+    <div class="inp">${ic('user')}<input id="bName" maxlength="40" placeholder="YOUR NAME" required></div>
+    <textarea id="bText" maxlength="300" placeholder="SHARE YOUR BLESSINGS FOR ${DATA.groom.name.toUpperCase()} & ${DATA.bride.name.toUpperCase()}..." required></textarea>
+    <button class="bbtn" id="bBtn">SEND BLESSINGS</button><p class="bnote" id="bNote"></p>
+  </form>
+  <div id="wlist"></div><button class="more" id="bMore" hidden>VIEW MORE</button>
+</section>`);
+
+/* 7. CLOSING */
+S.push(`<section id="closing"><div class="rv"><div class="mcircle">${DATA.monogram}</div><p>${DATA.closing}</p>
+  <div class="heart"><i></i><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6-8 11-8 11z"/></svg><i></i></div></div></section>`);
+
+document.getElementById("app").innerHTML = S.join("");
+
+/* --- Behaviour --- */
+const $ = s => document.querySelector(s);
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .15 });
+document.querySelectorAll(".rv").forEach(el => io.observe(el));
+
+const end = new Date(DATA.countdownTo).getTime(), cells = document.querySelectorAll("#cd b");
+(function tick(){
+  const left = Math.max(0, end - Date.now());
+  [864e5, 36e5, 6e4, 1e3].reduce((r, u, i) => { cells[i].textContent = String(Math.floor(r / u)).padStart(2, "0"); return r % u; }, left);
+  if (left) setTimeout(tick, 1000);
+})();
+
+/* --- Blessings wall --- */
+const B = DATA.blessings, LS = "blessings-" + DATA.groom.name + DATA.bride.name;
+let all = [], expanded = false;
+const esc = t => String(t).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const ago = ts => { const m = Math.floor((Date.now() - ts) / 6e4);
+  return m < 1 ? "just now" : m < 60 ? m + "m ago" : m < 1440 ? Math.floor(m / 60) + "h ago" : Math.floor(m / 1440) + "d ago"; };
+const local = { get(){ try { return JSON.parse(localStorage.getItem(LS)) || []; } catch(e){ return []; } },
+  set(v){ try { localStorage.setItem(LS, JSON.stringify(v)); } catch(e){} } };
+async function load(){
+  if (B.endpoint) { try { all = await (await fetch(B.endpoint)).json(); } catch(e){ all = local.get(); } } else all = local.get();
+  all.sort((a, b) => b.ts - a.ts); render();
+}
+function render(){
+  const list = expanded ? all : all.slice(0, B.show);
+  const wlist = $("#wlist"), bMore = $("#bMore");
+  if (!wlist) return;
+  wlist.innerHTML = all.length ? list.map(w => `<div class="wish"><div class="wh"><span class="av">${esc(w.name[0] || "?").toUpperCase()}</span>
+    <span class="wn">${esc(w.name)}</span><span class="ago">${ago(w.ts)}</span></div><p class="wt">“${esc(w.text)}”</p><span class="q">”</span></div>`).join("")
+    : '<p class="empty">Be the first to bless the couple ✨</p>';
+  if (bMore) {
+    bMore.hidden = all.length <= B.show;
+    bMore.textContent = expanded ? "VIEW LESS" : `VIEW MORE (${all.length - B.show})`;
+  }
+}
+const bMoreBtn = $("#bMore");
+if (bMoreBtn) {
+  bMoreBtn.onclick = () => { expanded = !expanded; render(); if (!expanded) $("#wishes").scrollIntoView(); };
+}
+const bform = $("#bform");
+if (bform) {
+  bform.addEventListener("submit", async e => {
+    e.preventDefault();
+    const w = { name: $("#bName").value.trim(), text: $("#bText").value.trim(), ts: Date.now() };
+    if (!w.name || !w.text) return;
+    const bBtn = $("#bBtn"), bNote = $("#bNote");
+    bBtn.disabled = true; bNote.textContent = "Sending…";
+    let ok = true;
+    if (B.endpoint) { try { await fetch(B.endpoint, { method: "POST", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(w) }); } catch(err){ ok = false; } }
+    if (!B.endpoint || !ok) local.set([w, ...local.get()]);
+    all.unshift(w); expanded = false; render();
+    bform.reset(); bBtn.disabled = false;
+    bNote.textContent = ok ? "Thank you for your blessings 🙏" : "Saved on this device — couldn't reach the server.";
+  });
+}
+load();
+
+/* --- Guaranteed Audio Playback System --- */
+const audio = document.getElementById("bgMusic");
+let musicStarted = false;
+
+function playAudio() {
+  if (musicStarted && !audio.paused) return;
+  const p = audio.play();
+  if (p !== undefined) {
+    p.then(() => {
+      musicStarted = true;
+    }).catch(() => {
+      // Browser prevented unprompted autoplay
+    });
+  }
+}
+
+// Global listener to ensure audio plays on any first interaction
+function ensureMusicOnGesture() {
+  if (audio.paused) {
+    audio.play().then(() => {
+      musicStarted = true;
+      ['click', 'touchstart', 'touchend', 'pointerdown'].forEach(ev => {
+        document.removeEventListener(ev, ensureMusicOnGesture);
+      });
+    }).catch(() => {});
+  }
+}
+['click', 'touchstart', 'touchend', 'pointerdown'].forEach(ev => {
+  document.addEventListener(ev, ensureMusicOnGesture);
+});
+
+/* --- Loader & Open Invitation Reveal --- */
+$("#lmono").textContent = DATA.monogram;
+let opened = false;
+
+function openInvitation() {
+  if (opened) return;
+  opened = true;
+  
+  // Directly trigger audio playback from user activation
+  playAudio();
+  
+  const loader = $("#loader");
+  if (loader) {
+    loader.classList.add("hide");
+    setTimeout(() => { try { loader.remove(); } catch(e){} }, 850);
+  }
+  document.body.classList.add("loaded");
+}
+
+// Clicking the open button or tapping anywhere on the welcome screen opens with music
+const loaderEl = $("#loader");
+if (loaderEl) {
+  loaderEl.addEventListener("click", openInvitation);
+}
+const openBtn = $("#openBtn");
+if (openBtn) {
+  openBtn.addEventListener("click", e => {
+    e.stopPropagation();
+    openInvitation();
+  });
+}
+
+// Attempt immediate autoplay on load if allowed by the browser
+const heroImg = new Image();
+heroImg.src = "hero.webp";
+Promise.all([
+  new Promise(r => {
+    if (heroImg.complete) r();
+    else heroImg.onload = heroImg.onerror = r;
+  }),
+  document.fonts ? document.fonts.ready : 0
+]).then(() => {
+  const p = audio.play();
+  if (p !== undefined) {
+    p.then(() => {
+      musicStarted = true;
+      // Autoplay succeeded! Open automatically
+      setTimeout(openInvitation, 400);
+    }).catch(() => {
+      // Browser requires tap; the "OPEN INVITATION" button is ready
+    });
+  }
+});
+</script>
+</body>
+</html>
