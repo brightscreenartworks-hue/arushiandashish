@@ -431,9 +431,9 @@ h2.big{font-family:'Cinzel',serif;font-weight:800;font-size:30px;line-height:1.1
 /* ---------- 5. RSVP ---------- */
 .rs{background:#fff;border:1px solid var(--line);border-radius:30px;padding:30px 26px 30px}
 .rs h2{text-align:center;font-weight:700;font-size:22px;letter-spacing:.25em;color:#3a1606}
-.rsvp-family{font-family:'Cinzel',serif;font-weight:700;font-size:20px;color:#3a1606;letter-spacing:.08em;margin:12px 0 6px}
-.rsvp-contact{font-size:14px;color:#7a4a1f;letter-spacing:.06em}
-.rsvp-phone{font-family:ui-monospace,monospace;font-size:16px;font-weight:700;color:#2e1608;text-decoration:none;border-bottom:1px dashed #c9a77a;padding-bottom:1px}
+.rsvp-family{font-family:'Cinzel',serif;font-weight:700;font-size:16px;color:#3a1606;letter-spacing:.1em;margin:10px 0 6px}
+.rsvp-contact{font-size:12.5px;color:#7a4a1f;letter-spacing:.04em;white-space:nowrap}
+.rsvp-phone{font-family:ui-monospace,monospace;font-size:13.5px;font-weight:700;color:#2e1608;text-decoration:none;border-bottom:1px dashed #c9a77a;padding-bottom:1px;white-space:nowrap}
 .rsvp-wa-pill{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:22px;background:#25d366;color:#fff;text-decoration:none;font-weight:700;font-size:13px;letter-spacing:.04em;box-shadow:0 4px 12px rgba(37,211,102,.25);transition:transform .2s}
 .rsvp-wa-pill:hover{transform:translateY(-1px)}
 .rsvp-wa-pill svg{width:16px;height:16px}
@@ -563,14 +563,14 @@ const DATA = {
   invitationText: "We request the honor of your gracious presence on the auspicious occasion of the wedding celebration of",
   bride: { name: "Arushi", parents: "Daughter of Mrs Maya Chandra and Mr Sunil Chandra" },
   groom: { name: "Ashish", parents: "Son of Mrs Rama Kanti and Late M.L. Rawat" },
-  countdownTo: "2026-12-12T18:30:00+05:30",
+  countdownTo: "2026-12-12T19:00:00+05:30",
   venues: [
     { label: "Wedding Venue", name: "The Grand CASA", address: "Hariharpur, Neelmatha, Near Delhi Public School, Shaheed Path, Lucknow",
       map: "The Grand CASA, Hariharpur, Neelmatha, Near Delhi Public School, Shaheed Path, Lucknow" }
   ],
   program: [
     { icon: "cal",   label: "The Date",            value: "<span class=\"date-line\">December 12<sup>th</sup> 2026</span><span class=\"sub-day\">Saturday</span>", desc: "Auspicious wedding ceremony" },
-    { icon: "clock", label: "Wedding Ceremony",    value: "6:30 PM<span class=\"sub-day\">Followed by Dinner</span>", desc: "" }
+    { icon: "clock", label: "Wedding Ceremony",    value: "7:00 PM onwards<span class=\"sub-day\">Followed by Dinner</span>", desc: "" }
   ],
   couplePhoto: "couple.jpg",
   rsvp: { family: "Chandra family", phones: ["9415196331", "9415104272"] },
@@ -693,9 +693,9 @@ S.push(`<section id="rsvp">
     ${sparkHead}
     <h2>RSVP</h2>
     <p class="rsvp-family">${DATA.rsvp.family}</p>
-    <p class="rsvp-contact" style="margin-top:8px;">Contact details: ${DATA.rsvp.phones.map(p => `<a href="tel:+91${p}" class="rsvp-phone">${p}</a>`).join(' &nbsp;|&nbsp; ')}</p>
-    <div style="margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-      ${DATA.rsvp.phones.map(p => `<a href="https://wa.me/91${p}?text=Namaste%20${encodeURIComponent(DATA.rsvp.family)}%20%F0%9F%99%8F" target="_blank" rel="noopener" class="rsvp-wa-pill">${WA}Chat on WhatsApp (${p})</a>`).join('')}
+    <p class="rsvp-contact" style="margin-top:8px;white-space:nowrap;">Contact details: ${DATA.rsvp.phones.map(p => `<a href="tel:+91${p}" class="rsvp-phone">${p}</a>`).join(' &nbsp;|&nbsp; ')}</p>
+    <div style="margin-top:16px;display:flex;justify-content:center;">
+      <a href="https://wa.me/91${DATA.rsvp.phones[0]}?text=Namaste%20${encodeURIComponent(DATA.rsvp.family)}%20%F0%9F%99%8F" target="_blank" rel="noopener" class="rsvp-wa-pill">${WA}Chat on WhatsApp</a>
     </div>
   </div>
 </section>`);
@@ -708,7 +708,7 @@ S.push(`<section id="wishes">
     <textarea id="bText" maxlength="300" placeholder="SHARE YOUR BLESSINGS FOR ${DATA.bride.name.toUpperCase()} & ${DATA.groom.name.toUpperCase()}..." required></textarea>
     <button class="bbtn" id="bBtn">SEND BLESSINGS</button><p class="bnote" id="bNote"></p>
   </form>
-  <div id="wlist"></div><button class="more" id="bMore" hidden>VIEW MORE</button>
+  <div id="wlist"></div><button class="more" id="bMore" style="display:none;" hidden>VIEW MORE</button>
 </section>`);
 
 /* 7. CLOSING */
@@ -749,8 +749,9 @@ function render(){
     <span class="wn">${esc(w.name)}</span><span class="ago">${ago(w.ts)}</span></div><p class="wt">“${esc(w.text)}”</p><span class="q">”</span></div>`).join("")
     : '<p class="empty">Be the first to bless the couple ✨</p>';
   if (bMore) {
+    bMore.style.display = all.length > B.show ? "block" : "none";
     bMore.hidden = all.length <= B.show;
-    bMore.textContent = expanded ? "VIEW LESS" : `VIEW MORE (${all.length - B.show})`;
+    bMore.textContent = expanded ? "VIEW LESS" : "VIEW MORE";
   }
 }
 const bMoreBtn = $("#bMore");
@@ -775,16 +776,34 @@ if (bform) {
 }
 load();
 
-/* --- Guaranteed Audio Playback System --- */
+/* --- Guaranteed Audio Playback System with 2s Fade-In --- */
 const audio = document.getElementById("bgMusic");
 let musicStarted = false;
 
+function fadeInAudio(durationMs = 2000, targetVolume = 1.0) {
+  audio.volume = 0;
+  const startTime = performance.now();
+  function step(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(1, elapsed / durationMs);
+    audio.volume = progress * targetVolume;
+    if (progress < 1 && !audio.paused) {
+      requestAnimationFrame(step);
+    } else {
+      audio.volume = targetVolume;
+    }
+  }
+  requestAnimationFrame(step);
+}
+
 function playAudio() {
   if (musicStarted && !audio.paused) return;
+  audio.volume = 0;
   const p = audio.play();
   if (p !== undefined) {
     p.then(() => {
       musicStarted = true;
+      fadeInAudio(2000, 1.0);
     }).catch(() => {
       // Browser prevented unprompted autoplay
     });
@@ -794,8 +813,10 @@ function playAudio() {
 // Global listener to ensure audio plays on any first interaction
 function ensureMusicOnGesture() {
   if (audio.paused) {
+    audio.volume = 0;
     audio.play().then(() => {
       musicStarted = true;
+      fadeInAudio(2000, 1.0);
       ['click', 'touchstart', 'touchend', 'pointerdown'].forEach(ev => {
         document.removeEventListener(ev, ensureMusicOnGesture);
       });
@@ -848,10 +869,12 @@ Promise.all([
   }),
   document.fonts ? document.fonts.ready : 0
 ]).then(() => {
+  audio.volume = 0;
   const p = audio.play();
   if (p !== undefined) {
     p.then(() => {
       musicStarted = true;
+      fadeInAudio(2000, 1.0);
       // Autoplay succeeded! Open automatically
       setTimeout(openInvitation, 400);
     }).catch(() => {
